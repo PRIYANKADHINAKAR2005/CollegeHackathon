@@ -155,6 +155,15 @@ app.post('/register-team', async (req, res) => {
     }
 });
 
+app.get("/teams", async (req, res) => {
+    try {
+      const teams = await Team.find({});
+      res.json(teams);
+    } catch (err) {
+      res.status(500).send("Error fetching teams: " + err);
+    }
+  });
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html')); // Make sure the HTML file is in the 'public' folder
 });
