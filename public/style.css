@@ -451,3 +451,103 @@ footer {
         content: url('headMobile.png');
     }
 }
+
+
+
+
+.hackathon-section {
+    width: 100%;
+    padding: 4%;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.hackathon-header h2 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #072a45;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: monospace;
+}
+
+.important-note, .important-note-2 {
+    text-align: center;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+.important-note p, .important-note-2 p {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: red;
+    animation: blink 1s infinite;
+}
+
+.hackathon-details {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.deadline h3 {
+    font-size: 1.6em;
+    font-weight: bold;
+    color: #0A2848;
+    margin-bottom: 10px;
+}
+
+.deadline p {
+    font-size: 1.2em;
+    color: #333;
+    line-height: 1.5;
+    padding-left: 10px;
+    border-left: 4px solid #0A2848;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.deadline p:hover {
+    transform: translateX(10px);
+    background: #0A2848;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 600px) {
+    .hackathon-header h2 {
+        font-size: 2em;
+    }
+
+    .important-note p, .important-note-2 p {
+        font-size: 1.2em;
+    }
+
+    .deadline h3 {
+        font-size: 1.3em;
+    }
+
+    .deadline p {
+        font-size: 1em;
+    }
+}
