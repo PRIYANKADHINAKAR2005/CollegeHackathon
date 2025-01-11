@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hackathon Teams</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      body {
+        font-family: monospace;
+        background-color: #f8f9fa;
+      }
+      
+      header {
+        background-color: #0A2848;
+        color: white;
+        text-align: center;
+        padding: 2% 0;
+      }
+      
+      h1 {
+        font-size: 2.5em;
+      }
+      
+      main {
+        padding: 4%;
+      }
+      
+      #teamsTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        max-width: 1200px;
+        margin: 20px auto;
+        background-color: white;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        animation: fadeIn 1s ease-in-out;
+      }
+      
+      #teamsTable th, #teamsTable td {
+        padding: 12px;
+        text-align: left;
+        font-size: 1.1em;
+      }
+      
+      #teamsTable th {
+        background-color: #0A2848;
+        color: white;
+      }
+      
+      #teamsTable td {
+        background-color: #f8f9fa;
+        color: #333;
+        transition: all 0.3s ease;
+      }
+      
+      
+      
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      /* Mobile (less than 600px) */
+      @media (max-width: 600px) {
+        header h1 {
+          font-size: 2em;
+        }
+      
+        #teamsTable th, #teamsTable td {
+          font-size: 0.9em;
+        }
+      }
+      
+      /* Tablet (600px to 900px) */
+      @media (min-width: 600px) and (max-width: 900px) {
+        header h1 {
+          font-size: 2.2em;
+        }
+      
+        #teamsTable th, #teamsTable td {
+          font-size: 1em;
+        }
+      }
+      
+      /* Desktop (900px to 1200px) */
+      @media (min-width: 900px) and (max-width: 1200px) {
+        header h1 {
+          font-size: 2.5em;
+        }
+      
+        #teamsTable th, #teamsTable td {
+          font-size: 1.1em;
+        }
+      }
+      
+      /* Large Desktop (1200px and above) */
+      @media (min-width: 1200px) {
+        header h1 {
+          font-size: 3em;
+        }
+      
+        #teamsTable th, #teamsTable td {
+          font-size: 1.2em;
+        }
+      }
+
+      *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    .nav{
+        background-image: url('head.png');
+        background-size: 100%;
+        width: 100%;
+        height: 20vh;
+        background-repeat: no-repeat;
+    }
+    .links{
+        width: 100%;
+        height: 7vh;
+        background-color: #0A2848;
+        display: flex;
+        /* justify-content: space-between; */
+        color: white;
+        padding-left: 2%;
+        padding-right: 1%;
+        align-items: center;
+        flex-wrap: wrap;
+        /* padding: 2%; */
+        margin-top: -6px;
+    
+    
+    }
+    .in1{
+        display: flex;
+        width: 100%;
+        /* justify-content: space-between; */
+        font-size:20px;
+        align-items: center;
+    }
+    
+    .links a{
+        color: white;
+        text-decoration: none;
+        display: inline;
+    }
+    .links h1{
+        font-size: 100%;
+    }
+    
+    .cont{
+        width: 100%;
+        height: 73%;
+        /* background-color: rgb(48, 110, 164); */
+        padding: 5%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-right: 0.5%;
+        justify-content: space-between;
+    }
+    .box1{
+        width: 68%;
+        height: 100%;
+        /* background-color: antiquewhite; */
+    }
+    
+    .box2{
+        width: 30%;
+        height: 100%;
+        /* background-color: aqua; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .textc{
+        color: black;
+        font-size: 280%;
+        font-weight: bold;
+        display: flex;
+        width: 100%;
+       
+        /* justify-content: space-between; */
+        align-items: center;
+        font-family:monospace;
+        color: #072a45;
+    }
+    
+    ::-webkit-scrollbar {
+        display: none; /* Hide scrollbars in Webkit browsers (Chrome, Safari, etc.) */
+      }
+    
+      .could {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+        padding: 0 15px;
+        color: #0A2848;
+    }
+    
+    .inside, .how-to-apply {
+        flex: 1;
+        padding: 20px;
+        background: rgb(255, 255, 255);
+        border-radius: 10px;
+        /* box-shadow: 0 4px 15px rgba(0,0,0,0.05); */
+    
+    }
+    
+    .inside ul, .how-to-apply ul {
+        list-style: none;
+        padding: 0;
+    }
+    
+    .inside li, .how-to-apply li {
+        margin-bottom: 15px;
+        padding: 10px;
+        border-left: 3px solid #0A2848;
+        background: #f8f9fa;
+        transition: all 0.3s ease;
+        
+    }
+    
+    .inside li:hover, .how-to-apply li:hover {
+        transform: translateX(10px);
+        background: #0A2848;
+        color: white;
+    }
+    
+    .det{
+        width: 95%;
+        padding: 1%;
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+        margin-top: -20px;
+        /* box-shadow: 0 4px 15px rgba(0,0,0,0.05); */
+    
+    
+    }
+    
+    .part1{
+        width: 50%;
+    }
+    .part2{
+        width: 50%;
+    }
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        margin: 0;
+    }
+    
+    *:root {
+        --blue--: #0A2848;
+    }
+    
+    footer {
+        width: 100%;
+        height: 90vh;
+        background-color: #0A2848;
+        position: relative;
+        bottom: 0;
+        margin-top: auto;
+        display: flex;
+    }
+    
+    .footer-top {
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10vh;
+        font-size: 120%;
+        width: 100%;
+    }
+    
+    
+    /* Root variables */
+    
+     :root {
+        --blue: #0A2848;
+        --white: #FFFFFF;
+        --gray: #D3D3D3;
+    }
+    
+    
+    /* Footer styles */
+    
+    footer {
+        width: 100%;
+        background-color: var(--blue);
+        color: var(--white);
+        font-family: monospace;
+        display: flex;
+        /* flex-wrap: wrap; */
+        justify-content: space-around;
+        padding: 40px;
+        align-items: flex-start;
+        flex-direction: column;
+        font-size: 120%;
+    }
+    
+    
+    /* Footer sections */
+    
+    .footer-section {
+        flex: 1 1 300px;
+        /* Responsive flex behavior */
+        align-items: center;
+        border-left: 1px solid white;
+        margin-top: -30px;
+        padding-left: 20px;
+    }
+    
+    .footer-section h3 {
+        margin-bottom: 10px;
+        font-size: 18px;
+        text-transform: uppercase;
+    }
+    
+    .footer-section ul {
+        list-style: none;
+    }
+    
+    .footer-section ul li {
+        margin: 5px 0;
+    }
+    
+    .footer-section ul li a {
+        color: var(--gray);
+        text-decoration: none;
+    }
+    
+    .footer-section ul li a:hover {
+        color: var(--white);
+    }
+    
+    
+    /* Footer bottom */
+    
+    .footer-bottom {
+        width: 100%;
+        text-align: center;
+        margin-top: 200px;
+        font-size: 14px;
+        border-top: 1px solid white;
+        padding-top: 2%;
+    }
+    
+    .ja {
+        width: 95%;
+        height: 40%;
+        /* background-color: aqua; */
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-left: 110px;
+        align-items: top;
+    }
+    
+    /* Mobile (less than 600px) */
+    @media (max-width: 600px) {
+        .nav {
+            height: 15vh;
+        }
+    
+        .links {
+            height: auto;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2%;
+            font-size: xx-small;
+        }
+        .links a {
+            font-size: xx-small;
+        }
+    
+        .links h1 {
+            font-size: small;
+            margin: 0;
+        }
+    
+        .cont {
+            flex-direction: column;
+            padding: 10px;
+        }
+    
+        .box1 {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    
+        .box2 {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+        }
+    
+        .textc {
+            font-size: 150%;
+        }
+    
+        .det {
+            flex-direction: column;
+        }
+    
+        .part1, .part2 {
+            width: 100%;
+        }
+    
+        .footer-bottom {
+            font-size: 12px;
+            margin-top: 20px;
+        }
+    }
+    
+    /* Tablet (600px to 900px) */
+    @media (min-width: 600px) and (max-width: 900px) {
+        .nav {
+            height: 18vh;
+        }
+    
+        .links {
+            height: auto;
+            flex-direction: column;
+            padding: 5%;
+        }
+    
+        .cont {
+            flex-direction: column;
+            padding: 8%;
+        }
+    
+        .box1 {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    
+        .box2 {
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+        }
+    
+        .textc {
+            font-size: 220%;
+        }
+    
+        .det {
+            flex-direction: column;
+        }
+    
+        .part1, .part2 {
+            width: 100%;
+        }
+    
+        .footer-bottom {
+            font-size: 14px;
+            margin-top: 40px;
+        }
+    }
+    
+    /* Desktop (900px to 1200px) */
+    @media (min-width: 900px) and (max-width: 1200px) {
+        .nav {
+            height: 20vh;
+        }
+    
+        .links {
+            height: 7vh;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    
+        .cont {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 5%;
+        }
+    
+        .box1 {
+            width: 65%;
+        }
+    
+        .box2 {
+            width: 30%;
+        }
+    
+        .textc {
+            font-size: 250%;
+        }
+    
+        .det {
+            flex-direction: row;
+        }
+    
+        .part1, .part2 {
+            width: 48%;
+        }
+    
+        .footer-bottom {
+            font-size: 16px;
+            margin-top: 50px;
+        }
+    }
+    
+    /* Large Desktop (1200px and above) */
+    @media (min-width: 1200px) {
+        .nav {
+            height: 25vh;
+        }
+    
+        .links {
+            height: 8vh;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    
+        .cont {
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 5%;
+        }
+    
+        .box1 {
+            width: 60%;
+        }
+    
+        .box2 {
+            width: 35%;
+        }
+    
+        .textc {
+            font-size: 280%;
+        }
+    
+        .det {
+            flex-direction: row;
+        }
+    
+        .part1, .part2 {
+            width: 48%;
+        }
+    
+        .footer-bottom {
+            font-size: 18px;
+            margin-top: 60px;
+        }
+    }
+    @media screen and (max-width: 768px) {
+        header img {
+            content: url('headMobile.png');
+        }
+    }
+    
+    .hackathon-section {
+        width: 100%;
+        padding: 4%;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        margin: 20px auto;
+        max-width: 1200px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    .hackathon-header h2 {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #072a45;
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: monospace;
+    }
+    
+    .important-note, .important-note-2 {
+        text-align: center;
+        margin: 20px 0;
+        padding: 10px;
+    }
+    
+    .important-note p, .important-note-2 p {
+        font-size: 1.5em;
+        font-weight: bold;
+        color: red;
+        animation: blink 1s infinite;
+    }
+    
+    .hackathon-details {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .deadline h3 {
+        font-size: 1.6em;
+        font-weight: bold;
+        color: #0A2848;
+        margin-bottom: 10px;
+    }
+    
+    .deadline p {
+        font-size: 1.2em;
+        color: #333;
+        line-height: 1.5;
+        padding-left: 10px;
+        border-left: 4px solid #0A2848;
+        background: #f8f9fa;
+        transition: all 0.3s ease;
+    }
+    
+    .deadline p:hover {
+        transform: translateX(10px);
+        background: #0A2848;
+        color: white;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    @keyframes blink {
+        50% {
+            opacity: 0;
+        }
+    }
+    
+    @media (max-width: 600px) {
+        .hackathon-header h2 {
+            font-size: 2em;
+        }
+    
+        .important-note p, .important-note-2 p {
+            font-size: 1.2em;
+        }
+    
+        .deadline h3 {
+            font-size: 1.3em;
+        }
+    
+        .deadline p {
+            font-size: 1em;
+        }
+    }
+    
+</style>
+<body>
+    <header>
+        <img src="head.png" alt="" style="width: 100%;height:20vh">
+        <div class="links">
+            <div class="in1">
+                &nbsp;&nbsp;
+            <h1>CSE Department</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/index.html">About</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/problem.html">Problem Statements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            </div>
+
+           
+          
+        </div>
+    </header>
+  <header>
+    <h1>Hackathon Teams</h1>
+  </header>
+  <main>
+    <table id="teamsTable">
+      <thead>
+        <tr>
+          <th>Team Name</th>
+          <th>Problem Statement</th>
+          <th>Year</th>
+          <th>Team Leader</th>
+        </tr>
+      </thead>
+      <tbody id="teamDetails">
+        <!-- Dynamic data will be inserted here -->
+      </tbody>
+    </table>
+  </main>
+  <img src="foot.png" alt="" style="width: 100%;margin-bottom:-10px">
+  <script>
+    // Fetch team data from the backend
+    fetch("http://localhost:3000/teams")
+      .then(response => response.json())
+      .then(teams => {
+        const tableBody = document.getElementById("teamDetails");
+        teams.forEach(team => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${team.TeamName}</td>
+            <td>${team.ProblemStatementId}</td>
+            <td>${team.Year}</td>
+            <td>${team.TeamLeaderName}</td>
+          `;
+          tableBody.appendChild(row);
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching teams:", error);
+      });
+  </script>
+</body>
+</html>
