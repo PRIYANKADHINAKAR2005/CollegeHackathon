@@ -3,223 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Team Registration</title>
-    <script>
-        function updateSections() {
-            const year = document.getElementById("Year").value;
-            const sectionDropdown = document.getElementById("Section");
-
-            sectionDropdown.innerHTML = ""; 
-            let sections = [];
-
-            if (year === "2") {
-                sections = ["A", "B", "C", "D", "E", "F"];
-            } else if (year === "3" || year === "4") {
-                sections = ["A", "B", "C"];
-            }
-
-            sections.forEach(section => {
-                const option = document.createElement("option");
-                option.value = section;
-                option.textContent = section;
-                sectionDropdown.appendChild(option);
-            });
-        }
-
-    </script>
+    <title>Registration Closed</title>
     <link rel="stylesheet" href="register.css">
 </head>
 <body>
     <header>
-        <img src="head.png" alt="" style="width: 100%;height:20vh">
+        <img src="head.png" alt="" style="width: 100%; height: 20vh">
         <div class="links">
             <div class="in1">
                 &nbsp;&nbsp;
-            <h1>CSE Department</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/index.html">About</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="/problem.html">Problem Statements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <h1>CSE Department</h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/index.html">About</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="/problem.html">Problem Statements</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="">Register</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             </div>
-
-           
-          
         </div>
     </header>
-    <div style="display: flex;align-items:center;justify-content:center;flex-direction:column;width:100%" id="fall">
-        <br><br>
-    <h1 style="padding: 1%;font-family:monospace">Team Registration</h1>
-        <br>
 
-    
-        <form id="registrationForm" enctype="multipart/form-data" style="width:80%;">
+    <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; width: 100%; margin-top: 10%;">
+        <h1 style="padding: 1%; font-family: monospace; font-size: 2rem; color: red;">Registration Closed</h1>
+        <p style="font-family: Arial, sans-serif; font-size: 1.2rem; color: #333; text-align: center; width: 80%;">
+            Thank you for your interest in participating. Unfortunately, the team registration period has ended. We appreciate your enthusiasm and look forward to seeing you in our upcoming events.
+        </p>
+    </div>
 
-            <div class="box">
-                <label for="TeamName">Team Name:</label>
-                <input type="text" class="inp" id="TeamName" name="TeamName" required>
-            </div>
-        
-            <div class="box">
-                <label for="Year">Year:</label>
-                <select id="Year" name="Year" class="inp" onchange="updateSections()" required>
-                    <option value="">Select Year</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </div>
-        
-            <div class="box">
-                <label for="Section">Section:</label>
-                <select id="Section" class="inp" name="Section" required>
-                    <option value="">Select Section</option>
-                </select>
-            </div>
-        
-            <div class="box">
-                <label for="Gender">Gender:</label>
-                <select id="Gender" name="Gender" class="inp" required>
-                    <option value="">Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <!-- <option value="Other">Other</option> -->
-                </select>
-            </div>
-        
-            <br><br>
-            <h3 style="font-family: monospace;font-size:x-large">Team Leader Details</h3>
-            <br><br>
-        
-            <div class="box">
-                <label for="TeamLeaderName">Name:</label>
-                <input type="text" class="inp" id="TeamLeaderName" name="TeamLeaderName" required>
-            </div>
-        
-            <div class="box">
-                <label for="TeamLeaderRegNo">Reg. No:</label>
-                <input type="text" class="inp" id="TeamLeaderRegNo" name="TeamLeaderRegNo" required>
-            </div>
-        
-            <div class="box">
-                <label for="TeamLeaderEmail">Email:</label>
-                <input type="email" class="inp" id="TeamLeaderEmail" name="TeamLeaderEmail" required>
-            </div>
-        
-            <br><br>
-            <h3 style="font-family: monospace;font-size:x-large">Team Members</h3>
-            <br><br>
-        
-            <div class="box">
-                <label for="Member1Name">Name:</label>
-                <input type="text" class="inp" id="Member1Name" name="Member1Name" required>
-            </div>
-        
-            <div class="box">
-                <label for="Member1RegNo">Reg. No:</label>
-                <input type="text" class="inp" id="Member1RegNo" name="Member1RegNo" required>
-            </div>
-        
-            <div class="box">
-                <label for="Member1Email">Email:</label>
-                <input type="email" class="inp" id="Member1Email" name="Member1Email" required>
-            </div>
-        
-            <div class="box">
-                <label for="Member2Name">Name:</label>
-                <input type="text" class="inp" id="Member2Name" name="Member2Name" required>
-            </div>
-        
-            <div class="box">
-                <label for="Member2RegNo">Reg. No:</label>
-                <input type="text" class="inp" id="Member2RegNo" name="Member2RegNo" required>
-            </div>
-        
-            <div class="box">
-                <label for="Member2Email">Email:</label>
-                <input type="email" class="inp" id="Member2Email" name="Member2Email" required>
-            </div>
-        
-            <div class="box">
-                <label for="Member3Name">Name:</label>
-                <input type="text" class="inp" id="Member3Name" name="Member3Name" required>
-            </div>
-        
-            <div class="box">
-                <label for="Member3RegNo">Reg. No:</label>
-                <input type="text" class="inp" id="Member3RegNo" name="Member3RegNo" required>
-            </div>
-        
-            <div class="box">
-                <label for="Member3Email">Email:</label>
-                <input type="email" class="inp" id="Member3Email" name="Member3Email" required>
-            </div>
-        
-            <div class="box">
-                <label for="ProblemStatementId">Problem Statement ID:</label>
-                <select id="ProblemStatementId" name="ProblemStatementId">
-                    <option value="">Select</option>
-                    <option value="25B3PS001">25B3PS001</option>
-                    <option value="25B3PS002">25B3PS002</option>
-                    <option value="25B3PS003">25B3PS003</option>
-                    <option value="25B3PS004">25B3PS004</option>
-                    <option value="25B3PS005">25B3PS005</option>
-                    <option value="25B3PS006">25B3PS006</option>
-                    <option value="25B3PS007">25B3PS007</option>
-                    <option value="25B3PS008">25B3PS008</option>
-                    <option value="25B3PS009">25B3PS009</option>
-                    <option value="25B3PS010">25B3PS010</option>
-                </select>
-            </div>
-        
-            <br><br>
-            <button type="submit" style="padding: 1%; padding-left:2%; padding-right:2%; background-color:#043f6c; color:white; border:none; font-size:large;width:200px">
-                Submit
-            </button>
-        </form>
-        
-      
-</div>
-
-<br><br><br><br><br><br>
-<div style="padding: 20px;margin:auto;width:60%;display:none;align-items:center;justify-content:center;background-color:rgba(0, 81, 255, 0.034);flex-direction:column" id="rise">
-    <h2 style="font-family: monospace;font-size:x-large;color:greenyellow">Submitted Successfully</h2><br>
-    <p id="message"></p>
-
-</div>
-<br><br>
-
-    <script>
-        document.getElementById("registrationForm").onsubmit = async function (e) {
-            e.preventDefault();
-            document.getElementById("rise").style.display = "flex";
-            document.getElementById("fall").style.display = "none"
-        
-            // Get form data
-            const formData = new FormData(this);
-            const data = {};
-        
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-        
-            console.log("Form data:", data);  // Log form data
-        
-            const response = await fetch('https://collegehackathon.onrender.com/register-team', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',  // Set the correct content type
-                },
-                body: JSON.stringify(data),  // Send data as JSON
-            });
-        
-            const result = await response.json();
-            document.getElementById("message").textContent = result.message;
-        
-            if (result.teamNumber) {
-                document.getElementById("message").textContent += ` Your Team Number: ${result.teamNumber}`;
-            }
-        };
-
-    </script>
+    <footer style="margin-top: 20%; text-align: center;">
+        <p style="font-family: Arial, sans-serif; font-size: 1rem; color: #666;">
+            &copy; 2025 CSE Department. All Rights Reserved.
+        </p>
+    </footer>
 </body>
 </html>
