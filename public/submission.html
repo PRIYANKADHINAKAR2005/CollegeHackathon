@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Form</title>
+    <link rel="stylesheet" href="register.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        header {
+            background-color: #043f6c;
+            color: white;
+        }
+        header img {
+            width: 100%;
+            height: 20vh;
+            object-fit: cover;
+        }
+        .links {
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .form-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        form {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        .box {
+            margin-bottom: 15px;
+        }
+        .box label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .box input,
+        .box select,
+        .box textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        textarea {
+            resize: vertical;
+        }
+        button {
+            padding: 10px 20px;
+            background: #043f6c;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+            display: block;
+            margin: 20px auto 0;
+        }
+        button:hover {
+            background: #0356a6;
+        }
+        .success-message,
+        .error-message {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="head.png" alt="Header Image">
+        <div class="links">
+            <h1>CSE Department</h1>
+            <nav>
+                <a href="/index.html">About</a>
+                <a href="/problem.html">Problem Statements</a>
+                <a href="#">Submit</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="form-container">
+        <h1>Submission Form</h1>
+        <form id="submissionForm" enctype="multipart/form-data">
+            <div class="box">
+                <label for="TeamName">Team Name:</label>
+                <input type="text" id="TeamName" name="TeamName" placeholder="Enter your team name" required>
+            </div>
+
+            <div class="box">
+                <label for="ProblemStatementId">Problem Statement ID:</label>
+                <select id="ProblemStatementId" name="ProblemStatementId" required>
+                    <option value="">Select Problem Statement</option>
+                    <option value="25B3PS001">25B3PS001</option>
+                    <option value="25B3PS002">25B3PS002</option>
+                    <option value="25B3PS001">25B3PS003</option>
+                    <option value="25B3PS001">25B3PS004</option>
+                    <option value="25B3PS001">25B3PS005</option>
+                    <option value="25B3PS001">25B3PS006</option>
+                    <option value="25B3PS001">25B3PS007</option>
+                    <option value="25B3PS001">25B3PS008</option>
+                    <option value="25B3PS001">25B3PS009</option>
+                    <option value="25B3PS001">25B3PS010</option>
+                </select>
+            </div>
+
+            <div class="box">
+                <label for="Title">Title:</label>
+                <input type="text" id="Title" name="Title" placeholder="Enter project title" required>
+            </div>
+
+            <div class="box">
+                <label for="Abstract">Abstract:</label>
+                <textarea id="Abstract" name="Abstract" rows="4" placeholder="Brief description of your project" required></textarea>
+            </div>
+
+            <div class="box">
+                <label for="TechStack">Technology Stack:</label>
+                <input type="text" id="TechStack" name="TechStack" placeholder="Enter tech stack (comma-separated)" required>
+            </div>
+            <div class="box">
+                <label for="PPT">PPT Link:</label>
+                <input type="url" id="PPT" name="PPT" placeholder="Enter presentation link (Google Drive)" required>
+                <p style="font-size: smaller; color: gray;">Make sure to set viewing permissions to "Anyone with the link can view"</p>
+            </div>
+
+            <!-- <div class="box">
+                <label for="PPT">PPT:</label>
+                <input type="file" id="PPT" name="PPT" accept="application/pdf,application/vnd.ms-powerpoint" required>
+            </div> -->
+
+            <div class="box">
+                <label for="SolutionVideo">Solution Video:</label>
+                <input type="url" id="SolutionVideo" name="SolutionVideo" placeholder="Google Drive Link" required>
+                <p style="font-size: smaller; color: gray;">Ensure the link has view permissions.</p>
+            </div>
+
+            <div class="box">
+                <label for="GithubLink">GitHub Repository Link:</label>
+                <input type="url" id="GithubLink" name="GithubLink" placeholder="GitHub URL" required>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+        <div class="success-message" id="successMessage" style="display: none;">Submission Successful!</div>
+        <div class="error-message" id="errorMessage" style="display: none;">Submission Failed. Try Again.</div>
+    </div>
+
+    <script>
+        document.getElementById('submissionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch('https://collegehackathon.onrender.com/submit-project', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(Object.fromEntries(formData))
+});
+
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('successMessage').textContent = result.message || 'Submission Successful!';
+                    form.reset();
+                } else {
+                    document.getElementById('errorMessage').style.display = 'block';
+                    document.getElementById('errorMessage').textContent = result.error || 'Submission Failed. Try Again.';
+                }
+            } catch (err) {
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('errorMessage').textContent = 'Network Error. Please try again later.';
+            }
+        });
+    </script>
+</body>
+</html>
