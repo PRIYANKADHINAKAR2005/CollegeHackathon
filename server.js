@@ -154,7 +154,46 @@ app.post('/register-team', async (req, res) => {
         res.status(400).json({ error: err.message }); // Return validation errors or other issues
     }
 });
+const projectSchema = new mongoose.Schema({
+    TeamName: { type: String, required: true },
+    ProblemStatementId: { type: String, required: true },
+    Title: { type: String, required: true },
+    Abstract: { type: String, required: true },
+    TechStack: { type: String, required: true },
+    PPT: { type: String, required: true },
+    SolutionVideo: { type: String, required: true },
+    GithubLink: { type: String, required: true }
+});
 
+// Create the model based on the schema
+const Project = mongoose.model('Project', projectSchema);
+
+// API to handle project submissions
+app.post('/submit-project', async (req, res) => {
+    try {
+        const { TeamName, ProblemStatementId, Title, Abstract, TechStack, PPT, SolutionVideo, GithubLink } = req.body;
+
+        // Create a new project instance
+        const newProject = new Project({
+            TeamName,
+            ProblemStatementId,
+            Title,
+            Abstract,
+            TechStack,
+            PPT,
+            SolutionVideo,
+            GithubLink
+        });
+
+        // Save the project data to MongoDB
+        await newProject.save();
+
+        res.status(201).json({ message: 'Project submission successful!' });
+    } catch (err) {
+        console.error('Error:', err);
+        res.status(400).json({ error: 'Failed to submit project. Ensure all fields are filled correctly.' });
+    }
+});
 app.get("/teams", async (req, res) => {
     try {
       const teams = await Team.find({});
