@@ -207,7 +207,9 @@
 
                 if (response.ok) {
                     document.getElementById('successMessage').style.display = 'block';
+                     document.getElementById('form1').style.display = 'none';
                     document.getElementById('successMessage').textContent = result.message || 'Submission Successful!';
+                    
                     form.reset();
                 } else {
                     document.getElementById('errorMessage').style.display = 'block';
