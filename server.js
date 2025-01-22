@@ -167,7 +167,39 @@ const projectSchema = new mongoose.Schema({
 
 // Create the model based on the schema
 const Project = mongoose.model('Project', projectSchema);
+app.get('/get_results', async (req, res) => {
+    try {
+        // Fetch all team data from the database
+        const teams = await Project.find();
 
+        // Problem statement IDs to check
+        const problemStatementIds = [
+            '25B3PS001', '25B3PS002', '25B3PS003', '25B3PS004', '25B3PS005',
+            '25B3PS006', '25B3PS007', '25B3PS008', '25B3PS009', '25B3PS010'
+        ];
+
+        // Structure the results
+        const results = {};
+        for (const problemId of problemStatementIds) {
+            const filteredTeams = teams.filter(team => team.ProblemStatementId === problemId);
+            if (filteredTeams.length > 0) {
+                results[problemId] = filteredTeams.map(team => team.TeamName);
+            }
+        }
+
+        // Send response
+        res.json({
+            success: true,
+            message: 'Results fetched successfully',
+            data: results
+        });
+    } catch (error) {
+        console.error('Error fetching results:', error);
+        res.status(500).json({
+            success: false,
+            message: 'An error occurred while fetching results'
+        });
+    }
 // API to handle project submissions
 app.post('/submit-project', async (req, res) => {
     try {
