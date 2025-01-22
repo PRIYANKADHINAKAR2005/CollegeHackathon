@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Announcement</title>
+   <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: 'Poppins', sans-serif;
+        background: #f9f9f9;
+        min-height: 100vh;
+        color: #333;
+        overflow-y: auto;
+        perspective: 1000px;
+    }
+    
+    .wrapper {
+        position: relative;
+        min-height: 100vh;
+        padding: 2rem;
+    }
+    
+    .initial-congrats {
+        position: fixed;
+        font-size: 10rem;
+        font-weight: 900;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(45deg, #ff0077, #ffcc00, #00ccff, #66ff99);
+        background-size: 400% 400%;
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: bigText 4s forwards, gradientFlow 8s ease infinite;
+        z-index: 1000;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+    }
+    body {
+        font-family: monospace;
+        background-color: #f8f9fa;
+      }
+      
+      header {
+        background-color: #0A2848;
+        color: white;
+        text-align: center;
+        padding: 2% 0;
+      }
+      
+      h1 {
+        font-size: 2.5em;
+      }
+      
+      main {
+        padding: 4%;
+      }
+    
+    .results-container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 2rem auto;
+        padding: 3rem;
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        position: relative;
+        z-index: 10;
+    }
+
+    .popup h1 {
+        font-size: 3rem;
+        margin: 1.5rem 0;
+        background: linear-gradient(45deg, #0073e6, #00ffcc);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        animation: titleGlow 2s ease-in-out infinite;
+    }
+    
+    .popup p {
+        font-size: 1.2rem;
+        text-align: center;
+        color: #555;
+        margin-bottom: 1.5rem;
+    }
+
+    .problem-statement {
+        background: #f3f4f6;
+        margin: 1.5rem 0;
+        padding: 2rem;
+        border-radius: 15px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        text-align: center;
+        transform-origin: center;
+        transition: transform 0.3s ease;
+    }
+
+    .team-name {
+        font-size: 1.8rem;
+        margin: 1rem 0;
+        padding: 1rem;
+        color: #0073e6;
+        text-align: center;
+        opacity: 0;
+        animation: slideInTeam 0.8s forwards;
+        animation-delay: calc(var(--team-index) * 0.5s + 2s);
+    }
+
+    #results-list {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+    }
+
+    #results-list li {
+        margin: 0.5rem 0;
+        padding: 0.5rem 1rem;
+        font-size: 20px;
+        color: #333;
+        
+        border-radius: 10px;
+    }
+
+    .thanks {
+        font-size: 1.2rem;
+        margin-top: 2rem;
+        color: #333;
+        text-align: center;
+    }
+
+    @keyframes slideInTeam {
+        from {
+            transform: translateX(-50px);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    @keyframes bigText {
+        0% { transform: scale(0.5); opacity: 0; }
+        20% { transform: scale(1.2); opacity: 1; }
+        80% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0); opacity: 0; }
+    }
+
+    @keyframes gradientFlow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    @keyframes titleGlow {
+        0%, 100% { text-shadow: 0 0 20px rgba(0, 115, 230, 0.5); }
+        50% { text-shadow: 0 0 40px rgba(0, 115, 230, 0.8); }
+    }
+
+    .popper {
+        position: fixed;
+        pointer-events: none;
+        z-index: 5;
+    }
+    
+   </style>
+</head>
+<body>
+    <header>
+        <img src="head.png" alt="" style="width: 100%;height:20vh">
+        
+
+           
+          
+        </div>
+    </header>
+    <div class="links">
+        <div class="wrapper">
+            <div class="results-container">
+                <div class="popup">
+                    <h1>✨ Congratulations! ✨</h1>
+                    <p>The teams selected are:</p>
+                    <ul id="results-list">
+                        <!-- Dynamic results will be injected here -->
+                    </ul>
+                    <p class="thanks">Thank you to everyone for your active participation!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  <script src="https://unpkg.com/@popperjs/core@2"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+           
+        
+            setInterval(createPopper, 200);
+        
+            setTimeout(() => {
+                initialCongrats.remove();
+                fetchResults();
+            }, 5000);
+        });
+        
+        async function fetchResults() {
+            try {
+                // Call the backend API to fetch results
+                const response = await fetch('https://collegehackathon.onrender.com/get_results');
+                const result = await response.json();
+    
+                if (result.success) {
+                    const data = result.data;
+                    const resultsList = document.getElementById('results-list');
+    
+                    // Clear existing results (if any)
+                    resultsList.innerHTML = '';
+    
+                    // Loop through the problem statement IDs
+                    for (const [problemId, teamNames] of Object.entries(data)) {
+                        if (teamNames.length > 0) {
+                            // Add the problem statement ID as a heading
+                            const problemHeading = document.createElement('li');
+                            problemHeading.innerHTML = `<strong>${problemId}</strong>`;
+                            problemHeading.style.marginTop = "15px";
+                            problemHeading.style.color = "#0073e6";
+                            resultsList.appendChild(problemHeading);
+    
+                            // Add the team names under the problem statement
+                            teamNames.forEach(team => {
+                                const teamItem = document.createElement('li');
+                                teamItem.textContent = `- ${team}`;
+                                resultsList.appendChild(teamItem);
+                            });
+                        }
+                    }
+                } else {
+                    console.error('Error fetching results:', result.message);
+                }
+            } catch (error) {
+                console.error('Error fetching results:', error);
+            }
+        }
+    
+        // Call the function to fetch and display results on page load
+        document.addEventListener('DOMContentLoaded', fetchResults);
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial congratulations animation
+            const initialCongrats = document.createElement('div');
+            initialCongrats.className = 'initial-congrats';
+            initialCongrats.textContent = 'CONGRATULATIONS!';
+            document.body.appendChild(initialCongrats);
+        
+            // Create floating poppers
+            setInterval(createPopper, 100);
+        
+            // Mouse glow effect
+            const glowEffect = document.createElement('div');
+            glowEffect.className = 'glow-effect';
+            document.body.appendChild(glowEffect);
+        
+            document.addEventListener('mousemove', (e) => {
+                glowEffect.style.left = e.clientX - 75 + 'px';
+                glowEffect.style.top = e.clientY - 75 + 'px';
+            });
+        
+            setTimeout(() => {
+                initialCongrats.remove();
+                fetchResults();
+            }, 2000);
+        });
+        
+        function createPopper() {
+            const popper = document.createElement('div');
+            popper.className = 'popper';
+            popper.style.left = Math.random() * window.innerWidth + 'px';
+            popper.style.top = Math.random() * window.innerHeight + 'px';
+            popper.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            popper.style.setProperty('--x', `${(Math.random() - 0.5) * 200}px`);
+            popper.style.setProperty('--y', `${(Math.random() - 0.5) * 200}px`);
+            document.body.appendChild(popper);
+            
+            setTimeout(() => popper.remove(), 1000);
+        }
+        
+    </script>
+    
+    
+</body>
+</html>
